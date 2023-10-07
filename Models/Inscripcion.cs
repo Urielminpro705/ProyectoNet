@@ -4,6 +4,7 @@ namespace Universidad.Models {
         A,B,C,D
     }
     public class Inscripcion {
+        [Key]
         public int id_inscripcion {get;set;}
         public int id_curso {get;set;}
         public int id_estudiante {get;set;}
