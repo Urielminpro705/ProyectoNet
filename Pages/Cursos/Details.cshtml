@@ -25,6 +25,24 @@
         </dd>
     </dl>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id_Estudiantes inscritos
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Curso.Inscripciones) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_estudiante)
+            </td>
+        </tr>
+}
+    </tbody>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Curso?.id_curso">Editar</a> |
     <a asp-page="./Index">Volver a la lista</a>

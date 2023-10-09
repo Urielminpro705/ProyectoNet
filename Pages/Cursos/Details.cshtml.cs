@@ -28,7 +28,9 @@ namespace Universidad.Pages_Cursos
                 return NotFound();
             }
 
-            var curso = await _context.Curso.FirstOrDefaultAsync(m => m.id_curso == id);
+            var curso = await _context.Curso
+            .Include(i => i.Inscripciones)
+            .FirstOrDefaultAsync(m => m.id_curso == id);
             if (curso == null)
             {
                 return NotFound();

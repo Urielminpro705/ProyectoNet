@@ -35,16 +35,25 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Estudiante.Fecha_de_inscripcion)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Estudiante.Inscripciones)
-        </dt>
-        <dd class="col-sm-10">
-            @if (Model.Estudiante.Inscripciones != null && Model.Estudiante.Inscripciones.Any())
-            {
-                string idsInscripciones = string.Join(", ", Model.Estudiante.Inscripciones.Select(i => i.id_curso));
-                @idsInscripciones
-            }
-        </dd>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Id_Cursos inscritos
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Estudiante.Inscripciones)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id_curso)
+                        </td>
+                    </tr>
+                }
+            </tbody>
     </dl>
 </div>
 <div>
