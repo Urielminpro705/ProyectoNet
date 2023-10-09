@@ -1,0 +1,48 @@
+@page
+@model Universidad.Pages_Inscripciones.IndexModel
+
+@{
+    ViewData["Title"] = "Inscripciones";
+}
+
+<h1>Inscripciones</h1>
+
+<p>
+    <a asp-page="Create">Nueva Inscripcion</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Inscripcion[0].id_inscripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inscripcion[0].Curso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inscripcion[0].Estudiante)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Inscripcion) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_inscripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curso.id_curso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estudiante.id_estudiante)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id_inscripcion">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.id_inscripcion">Detalles</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id_inscripcion">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

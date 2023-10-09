@@ -1,0 +1,34 @@
+@page
+@model Universidad.Pages_Inscripciones.DeleteModel
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+
+<h1>Borrar</h1>
+
+<h3>¿Estás seguro de que quieres eliminar esto?</h3>
+<div>
+    <h4>Inscripcion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Inscripcion.Curso)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Inscripcion.Curso.id_curso)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Inscripcion.Estudiante)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Inscripcion.Estudiante.id_estudiante)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Inscripcion.id_inscripcion" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-page="./Index">Volver a la lista</a>
+    </form>
+</div>

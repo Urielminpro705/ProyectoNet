@@ -12,7 +12,7 @@ namespace Universidad.Models {
         [ForeignKey("Estudiante")]
         public int id_estudiante {get;set;}
         // [Display.Format(null.DisplayText="Sin Grado")]
-        [Display(Name = "Sin Grado")]
+        //[Display(Name = "Sin Grado")]
         
         public Curso Curso {get;set;}
         public Estudiante Estudiante {get;set;}
