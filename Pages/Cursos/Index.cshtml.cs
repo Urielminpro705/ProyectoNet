@@ -24,12 +24,10 @@ namespace Universidad.Pages_Cursos
 
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
-        [BindProperty(SupportsGet = true)]
-        public string? MovieGenre { get; set; }
         public async Task OnGetAsync()
         {
             var cursos = from m in _context.Curso
-                         select m;
+                        select m;
             if (!string.IsNullOrEmpty(SearchString))
             {
                 cursos = cursos.Where(s => s.titulo.Contains(SearchString));

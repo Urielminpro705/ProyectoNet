@@ -20,13 +20,17 @@ namespace Universidad.Pages_Estudiantes
         }
 
         public IList<Estudiante> Estudiante { get;set; } = default!;
-
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
         public async Task OnGetAsync()
         {
-            if (_context.Estudiante != null)
+            var estudiantes = from e in _context.Estudiante
+                        select e;
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                Estudiante = await _context.Estudiante.ToListAsync();
+                estudiantes = estudiantes.Where(s => s.Nombre.Contains(SearchString));
             }
+                Estudiante = await estudiantes.ToListAsync();
         }
     }
 }
