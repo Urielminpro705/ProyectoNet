@@ -22,12 +22,19 @@ namespace Universidad.Pages_Cursos
 
         public IList<Curso> Curso { get; set; } = default!;
 
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? MovieGenre { get; set; }
         public async Task OnGetAsync()
         {
-            if (_context.Curso != null)
+            var cursos = from m in _context.Curso
+                         select m;
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                Curso = await _context.Curso.ToListAsync();
+                cursos = cursos.Where(s => s.titulo.Contains(SearchString));
             }
+                Curso = await cursos.ToListAsync();
         }
     }
 }
