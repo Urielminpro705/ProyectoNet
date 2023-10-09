@@ -29,7 +29,10 @@ namespace Universidad.Pages_Inscripciones
                 return NotFound();
             }
 
-            var inscripcion = await _context.Inscripcion.FirstOrDefaultAsync(m => m.id_inscripcion == id);
+            var inscripcion = await _context.Inscripcion
+            .Include(i => i.Curso)
+            .Include(i => i.Estudiante)
+            .FirstOrDefaultAsync(m => m.id_inscripcion == id);
 
             if (inscripcion == null)
             {

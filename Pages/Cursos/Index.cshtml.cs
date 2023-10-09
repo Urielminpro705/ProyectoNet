@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Universidad.Data;
 using Universidad.Models;
@@ -19,7 +20,7 @@ namespace Universidad.Pages_Cursos
             _context = context;
         }
 
-        public IList<Curso> Curso { get;set; } = default!;
+        public IList<Curso> Curso { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
